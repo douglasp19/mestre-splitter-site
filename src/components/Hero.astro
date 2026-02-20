@@ -26,13 +26,13 @@
       </p>
 
       <div class="button-group">
-        <a href="#" class="btn btn-buy">
-          Comprar Agora
+        <a href="https://pay.kiwify.com.br/SU2ZVai?coupon=LANCAMENTO" class="btn btn-buy">
+          Compre Agora
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-        <a href="#" class="btn btn-demo">Solicitar Demo (7 dias)</a>
+        <a href="https://github.com/douglasp19/mestre-splitter-releases/releases/download/1.0/Setup_MestreSplitter.exe" class="btn btn-demo">Experimente por 7 dias!</a>
       </div>
 
       <div class="stats-wrapper">
@@ -69,13 +69,12 @@
         />
       </div>
 
-      <!-- Tag de preço flutuante -->
       <div class="price-tag">
         <span class="price-label">🎉 Promoção de lançamento</span>
         <div class="price-row">
           <span class="price-old">R$ 99,90</span>
           <span class="price-arrow">→</span>
-          <span class="price-new">R$ 49,90</span>
+          <span class="price-new">R$ 49,95</span>
         </div>
         <span class="price-sub">Pagamento único · Licença vitalícia</span>
       </div>
@@ -85,6 +84,12 @@
 </section>
 
 <style>
+  /* Reset global de overflow para garantir que nada escape */
+  :global(html), :global(body) {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
   .hero {
     position: relative;
     min-height: 100vh;
@@ -93,6 +98,8 @@
     justify-content: center;
     padding: 80px 40px;
     overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .grid-bg {
@@ -127,6 +134,7 @@
     align-items: center;
     max-width: 1100px;
     width: 100%;
+    box-sizing: border-box;
     animation: fadeUp 0.8s ease both;
   }
 
@@ -136,7 +144,12 @@
   }
 
   /* TEXTO */
-  .text-col { order: 1; }
+  .text-col {
+    order: 1;
+    min-width: 0; /* essencial para evitar overflow em grid */
+    width: 100%;
+    box-sizing: border-box;
+  }
 
   .badge-top {
     display: flex;
@@ -171,13 +184,17 @@
   }
 
   h1 {
-    font-size: clamp(2rem, 4vw, 3.6rem);
+    font-size: clamp(1.8rem, 5vw, 3.6rem);
     font-weight: 900;
-    line-height: 1.08;
-    letter-spacing: -2px;
+    line-height: 1.1;
+    letter-spacing: -1px;
     margin-bottom: 20px;
     color: var(--text-light);
     text-align: left;
+    /* Impede overflow de texto */
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .highlight {
@@ -193,6 +210,8 @@
     margin-bottom: 36px;
     max-width: 480px;
     text-align: left;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   p strong { color: var(--text-light); }
@@ -249,15 +268,19 @@
     align-items: center;
     order: 2;
     gap: 20px;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .mascot-wrapper {
     position: relative;
     display: flex;
     justify-content: center;
+    width: 100%;
   }
 
-  .mascote-glow {
+  .mascot-glow {
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -292,10 +315,12 @@
     background: var(--card-bg);
     border: 1px solid rgba(0, 255, 204, 0.25);
     border-radius: 14px;
-    padding: 16px 28px;
+    padding: 16px 24px;
     animation: float 5s ease-in-out infinite;
     animation-delay: 0.5s;
-    box-shadow: 0 0 30px rgba(0, 255, 204, 0.06), inset 0 1px 0 rgba(255,255,255,0.04);
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.06);
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .price-label {
@@ -304,12 +329,15 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--neon-green);
+    text-align: center;
   }
 
   .price-row {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .price-old {
@@ -319,12 +347,10 @@
     text-decoration: line-through;
     text-decoration-color: rgba(255, 80, 80, 0.7);
     text-decoration-thickness: 2px;
+    white-space: nowrap;
   }
 
-  .price-arrow {
-    color: var(--text-gray);
-    font-size: 0.9rem;
-  }
+  .price-arrow { color: var(--text-gray); font-size: 0.9rem; }
 
   .price-new {
     font-family: "Syne", sans-serif;
@@ -332,30 +358,68 @@
     font-weight: 900;
     color: var(--neon-green);
     text-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+    white-space: nowrap;
   }
 
   .price-sub {
     font-size: 0.72rem;
     color: var(--text-gray);
     letter-spacing: 0.04em;
+    text-align: center;
   }
 
   /* MOBILE */
   @media (max-width: 768px) {
-    .hero { padding: 60px 24px 80px; }
+    .hero {
+      padding: 48px 20px 72px;
+      align-items: flex-start;
+    }
 
     .hero-inner {
       grid-template-columns: 1fr;
-      gap: 0;
+      gap: 24px;
+      width: 100%;
     }
 
-    .mascot-col { order: -1; margin-bottom: 8px; }
-    .mascot-img { max-width: 240px; }
+    .mascot-col {
+      order: -1;
+    }
 
-    .text-col { order: 1; text-align: center; }
-    h1, p { text-align: center; }
-    p { max-width: 100%; }
+    .mascot-img {
+      max-width: 200px;
+    }
+
+    .price-tag {
+      padding: 14px 16px;
+    }
+
+    .price-new {
+      font-size: 1.7rem;
+    }
+
+    .text-col {
+      order: 1;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(1.7rem, 8vw, 2.4rem);
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      max-width: 100%;
+    }
+
     .button-group { justify-content: center; }
-    .stats { width: 100%; justify-content: center; }
+
+    .stats {
+      width: 100%;
+      justify-content: center;
+      gap: 16px;
+      padding: 14px 16px;
+    }
   }
 </style>

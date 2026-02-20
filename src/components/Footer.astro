@@ -1,34 +1,105 @@
 ---
 const year = new Date().getFullYear();
+
+const faqs = [
+  {
+    question: "O Mestre Splitter funciona sem internet?",
+    answer: "Sim! O Mestre Splitter roda 100% no seu computador, sem precisar enviar nenhum arquivo para a nuvem. Basta instalar uma vez e usar para sempre, mesmo offline. Só é necessário o uso da internet para validar a chave e baixar os motores de transcrição."
+  },
+  {
+    question: "Em quais sistemas operacionais funciona?",
+    answer: "Atualmente o Mestre Splitter é compatível com Windows 10 e 11. Versões para macOS e Linux estão em desenvolvimento."
+  },
+  {
+    question: "Preciso de uma placa de vídeo potente?",
+    answer: "Não é obrigatório. O programa funciona na CPU, mas se você tiver uma GPU NVIDIA com suporte a CUDA, o processamento será significativamente mais rápido."
+  },
+  {
+    question: "Qual é a diferença entre a licença e uma assinatura?",
+    answer: "Com a licença você paga uma única vez e usa para sempre, sem cobranças mensais e sem taxas adicionais."
+  },
+  {
+    question: "Quantos vídeos posso processar por dia?",
+    answer: "Ilimitados! Como tudo roda localmente no seu hardware, não há nenhum limite de uso. Processe 1 ou 1000 vídeos por dia — o custo é zero."
+  },
+  {
+    question: "O programa suporta quais formatos de vídeo?",
+    answer: "O Mestre Splitter suporta os formatos mais comuns: MP4, MKV e AVI. O processamento é feito via FFmpeg, garantindo ampla compatibilidade."
+  },
+  {
+    question: "Como funciona a demo de 7 dias?",
+    answer: "Ao solicitar a demo, você recebe acesso completo ao programa por 7 dias para testar todas as funcionalidades sem restrições. Não é necessário cartão de crédito."
+  },
+  {
+    question: "Posso usar em mais de um computador?",
+    answer: "A licença padrão é de uso único, sendo possível a configuração em apenas um computador."
+  },
+];
 ---
 
-<footer class="footer">
-  <div class="footer-inner">
-
-    <div class="footer-brand">
-      <span class="footer-logo">MS</span>
-      <span class="footer-name">Mestre Splitter</span>
+<footer id="site-footer">
+  <div class="f-inner">
+    <div class="f-brand">
+      <span class="f-logo">MS</span>
+      <span class="f-name">Mestre Splitter</span>
     </div>
-
-    <p class="footer-copy">
-      © {year} Mestre Splitter. Todos os direitos reservados.
-    </p>
-
-    <div class="footer-links">
-      <a href="#">Contato</a>
+    <p class="f-copy">© {year} Mestre Splitter. Todos os direitos reservados.</p>
+    <div class="f-links">
+      <button class="f-btn" id="js-faq-open">FAQ</button>
+      <span class="f-sep">·</span>
+      <a href="https://www.linkedin.com/in/douglas-pinheiro-359a0581/?skipRedirect=true" class="f-link">Criador</a>
+      <span class="f-sep">·</span>
+      <a href="mailto:mestresplitter@gmail.com" class="f-link">Suporte</a>
     </div>
-
   </div>
 </footer>
 
+<!-- Modal FAQ -->
+<div id="js-faq-modal" class="m-overlay">
+  <div class="m-box">
+
+    <div class="m-head">
+      <div class="m-head-left">
+        <span class="m-badge">FAQ</span>
+        <h2 class="m-title">Perguntas Frequentes</h2>
+      </div>
+      <button class="m-close" id="js-faq-close" aria-label="Fechar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="m-body">
+      {faqs.map((faq, i) => (
+        <div class="a-item" id={`faq-item-${i}`}>
+          <button class="a-trigger" data-index={i}>
+            <span class="a-question">{faq.question}</span>
+            <svg class="a-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="a-answer" id={`faq-answer-${i}`}>
+            <p class="a-text">{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</div>
+
 <style>
-  .footer {
+  /* ── FOOTER ── */
+  #site-footer {
     border-top: 1px solid #1e2a3a;
-    background-color: #080b10;
+    background: #080b10;
     padding: 36px 40px;
+    font-family: "DM Sans", sans-serif;
   }
 
-  .footer-inner {
+  .f-inner {
     max-width: 1100px;
     margin: 0 auto;
     display: flex;
@@ -38,13 +109,9 @@ const year = new Date().getFullYear();
     gap: 16px;
   }
 
-  .footer-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .f-brand { display: flex; align-items: center; gap: 10px; }
 
-  .footer-logo {
+  .f-logo {
     font-family: "Syne", sans-serif;
     font-size: 0.85rem;
     font-weight: 900;
@@ -52,54 +119,252 @@ const year = new Date().getFullYear();
     color: #080b10;
     padding: 3px 7px;
     border-radius: 5px;
-    letter-spacing: 0.02em;
   }
 
-  .footer-name {
+  .f-name {
     font-family: "Syne", sans-serif;
     font-size: 0.9rem;
     font-weight: 700;
     color: #dde3ed;
   }
 
-  .footer-copy {
-    font-family: "DM Sans", sans-serif;
+  .f-copy {
     font-size: 0.82rem;
     color: #8892a4;
     margin: 0;
   }
 
-  .footer-links {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .f-links { display: flex; align-items: center; gap: 8px; }
+
+  .f-link, .f-btn {
     font-family: "DM Sans", sans-serif;
     font-size: 0.82rem;
-  }
-
-  .footer-links a {
     color: #8892a4;
     text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
     transition: color 0.2s;
   }
+  .f-link:hover, .f-btn:hover { color: #00ffcc; }
 
-  .footer-links a:hover {
+  .f-sep { color: #2d3748; }
+
+  @media (max-width: 640px) {
+    #site-footer { padding: 28px 20px; }
+    .f-inner { flex-direction: column; align-items: center; text-align: center; }
+  }
+
+  /* ── OVERLAY ── */
+  .m-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    /* Começa invisível e fora do fluxo de interação */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+
+  .m-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* ── MODAL BOX ── */
+  .m-box {
+    background: #0f1420;
+    border: 1px solid #1e2a3a;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 660px;
+    max-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,255,204,0.07);
+    transform: translateY(24px) scale(0.97);
+    transition: transform 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
+    overflow: hidden;
+  }
+
+  .m-overlay.is-open .m-box {
+    transform: translateY(0) scale(1);
+  }
+
+  /* ── HEADER ── */
+  .m-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid #1e2a3a;
+    flex-shrink: 0;
+  }
+
+  .m-head-left { display: flex; align-items: center; gap: 12px; }
+
+  .m-badge {
+    font-family: "Syne", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    background: #00ffcc;
+    color: #080b10;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .m-title {
+    font-family: "Syne", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #dde3ed;
+    margin: 0;
+    letter-spacing: -0.5px;
+  }
+
+  .m-close {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid #1e2a3a;
+    background: #131926;
+    color: #8892a4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .m-close:hover { border-color: rgba(0,255,204,0.35); color: #00ffcc; background: rgba(0,255,204,0.06); }
+
+  /* ── SCROLL BODY ── */
+  .m-body {
+    overflow-y: auto;
+    padding: 8px 28px 24px;
+    scrollbar-width: thin;
+    scrollbar-color: #1e2a3a transparent;
+  }
+  .m-body::-webkit-scrollbar { width: 4px; }
+  .m-body::-webkit-scrollbar-thumb { background: #1e2a3a; border-radius: 4px; }
+
+  /* ── ACCORDION ── */
+  .a-item { border-bottom: 1px solid #1e2a3a; }
+  .a-item:last-child { border-bottom: none; }
+
+  .a-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 18px 0;
+    text-align: left;
+  }
+
+  .a-question {
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #dde3ed;
+    transition: color 0.2s;
+    line-height: 1.4;
+  }
+
+  .a-trigger:hover .a-question { color: #00ffcc; }
+
+  .a-icon {
+    flex-shrink: 0;
+    color: #8892a4;
+    transition: transform 0.3s ease, color 0.2s;
+  }
+
+  .a-item.is-open .a-icon {
+    transform: rotate(180deg);
     color: #00ffcc;
   }
 
-  .sep {
-    color: #1e2a3a;
+  .a-item.is-open .a-question { color: #00ffcc; }
+
+  /* Animação accordion via grid-template-rows */
+  .a-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+
+  .a-item.is-open .a-answer {
+    grid-template-rows: 1fr;
+  }
+
+  .a-text {
+    overflow: hidden;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.9rem;
+    color: #8892a4;
+    line-height: 1.65;
+    padding-bottom: 18px;
+    margin: 0;
   }
 
   @media (max-width: 640px) {
-    .footer {
-      padding: 32px 24px;
-    }
-
-    .footer-inner {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+    .m-head { padding: 20px 20px 16px; }
+    .m-body { padding: 4px 20px 20px; }
+    .m-title { font-size: 1.05rem; }
   }
 </style>
+
+<script>
+  const overlay  = document.getElementById("js-faq-modal")!;
+  const openBtn  = document.getElementById("js-faq-open")!;
+  const closeBtn = document.getElementById("js-faq-close")!;
+
+  function openModal() {
+    overlay.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    overlay.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  openBtn.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+
+  // Clique fora do modal fecha
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeModal();
+  });
+
+  // ESC fecha
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.classList.contains("is-open")) closeModal();
+  });
+
+  // Accordion
+  document.querySelectorAll(".a-trigger").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".a-item")!;
+      const isOpen = item.classList.contains("is-open");
+
+      // Fecha todos
+      document.querySelectorAll(".a-item").forEach((i) => i.classList.remove("is-open"));
+
+      // Abre o clicado se não estava aberto
+      if (!isOpen) item.classList.add("is-open");
+    });
+  });
+</script>

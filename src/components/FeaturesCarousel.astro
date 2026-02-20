@@ -2,396 +2,382 @@
 const features = [
   {
     badge: "Performance",
-    icon: "⚡",
     title: "Tecnologia de Ponta",
-    description:
-      "Motor Faster Whisper combinado com processamento FFmpeg para a maior velocidade do mercado. Resultados profissionais em segundos.",
-    accent: "#00ffcc",
+    description: "Motor Faster Whisper e FFmpeg para a maior velocidade do mercado. Nada enviado para servidores externos.",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
   },
   {
     badge: "Autonomia",
-    icon: "🖥️",
     title: "Solução 100% Offline",
-    description:
-      "Diferente de outros serviços, Mestre Splitter roda inteiramente no seu hardware. Sem custos por minuto, sem nuvem, sem limites.",
-    accent: "#00ffcc",
+    description: "Funciona inteiramente no seu hardware. Sem custos por minuto, sem upload para nuvem, sem limites.",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
   },
   {
-    badge: "Idiomas",
-    icon: "🌐",
-    title: "Multi idiomas",
-    description:
-      "Detecção automática de mais de 90 idiomas para gerar arquivos de legenda com pontuação perfeita e precisão profissional.",
-    accent: "#00ffcc",
+    badge: "Multi-idiomas",
+    title: "90+ Idiomas Detectados",
+    description: "Detecção automática de mais de 90 idiomas com pontuação perfeita para qualquer audiência no mundo.",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
   },
   {
     badge: "Precisão",
-    icon: "✂️",
-    title: "Alta Qualidade",
-    description:
-      "Fatie vídeos longos em partes perfeitas para Shorts, Reels e TikTok. Cortes exatos, sem artefatos, em segundos.",
-    accent: "#00ffcc",
+    title: "Cortes Perfeitos",
+    description: "Fatie vídeos longos para Shorts, Reels e TikTok em segundos. Precisão de frame sem perda de qualidade.",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/></svg>`,
   },
   {
     badge: "Escalável",
-    icon: "∞",
     title: "Uso Ilimitado",
-    description:
-      "Legende e corte 1 ou 1.000 vídeos por dia. O custo operacional é zero — você paga uma vez e usa para sempre.",
-    accent: "#00ffcc",
+    description: "1 ou 1000 vídeos por dia — custo adicional zero. Escale sua produção sem surpresa no fim do mês.",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
   },
   {
     badge: "Interface",
-    icon: "🎯",
     title: "Fácil de Usar",
-    description:
-      "Interface interativa desenhada para editores. Arraste, solte e processe com poucos cliques. Curva de aprendizado zero.",
-    accent: "#00ffcc",
+    description: "Arraste, solte e processe com poucos cliques. Você estará produzindo já no primeiro uso.",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
   },
 ];
 ---
 
-<section class="carousel-section">
-  <div class="section-header">
-    <p class="section-tag">✦ Por que o Mestre Splitter?</p>
-    <h2>
-      Cansado de pagar assinaturas<br />
-      <span class="highlight">caras todo mês?</span>
-    </h2>
-    <p class="section-sub">
-      Irritado com limites de minutos ou precisar de internet ultra-rápida para subir vídeos pesados na nuvem?
+<section class="features-section">
+  <div class="features-header">
+    <p class="section-label">Recursos</p>
+    <h2>Cansado de pagar assinaturas<br />caras todo mês?</h2>
+    <p class="section-desc">
+      Chega de limites de minutos, upload lento e surpresas no cartão.
+      O Mestre Splitter é seu, para sempre.
     </p>
   </div>
 
-  <!-- Track do carrossel -->
-  <div class="carousel-outer">
-    <div class="carousel-track" id="carousel-track">
-      {
-        features.map((feature, i) => (
-          <div class="card" data-index={i}>
-            <div class="card-top">
-              <span class="card-icon">{feature.icon}</span>
-              <span class="card-badge">{feature.badge}</span>
-            </div>
-            <h3>{feature.title}</h3>
-            <p>{feature.description}</p>
-            <div class="card-number">0{i + 1}</div>
+  <div class="carousel-wrapper">
+    <!-- Setas (desktop) -->
+    <button class="arrow-btn" id="fc-prev" aria-label="Anterior">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+
+    <div class="carousel-container" id="fc-container">
+      <div class="carousel-fade-left"></div>
+      <div class="carousel-fade-right"></div>
+
+      <div class="carousel-track" id="fc-track">
+        {features.map((f) => (
+          <div class="card">
+            <div class="card-icon" set:html={f.icon} />
+            <span class="card-badge">{f.badge}</span>
+            <h3 class="card-title">{f.title}</h3>
+            <p class="card-desc">{f.description}</p>
           </div>
-        ))
-      }
+        ))}
+        <!-- Duplicata para loop infinito -->
+        {features.map((f) => (
+          <div class="card" aria-hidden="true">
+            <div class="card-icon" set:html={f.icon} />
+            <span class="card-badge">{f.badge}</span>
+            <h3 class="card-title">{f.title}</h3>
+            <p class="card-desc">{f.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
 
-    <!-- Botões de navegação -->
-    <button class="nav-btn nav-prev" id="prev-btn" aria-label="Anterior">
-      ←
+    <button class="arrow-btn" id="fc-next" aria-label="Próximo">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
     </button>
-    <button class="nav-btn nav-next" id="next-btn" aria-label="Próximo">
-      →
-    </button>
-  </div>
-
-  <!-- Indicadores de paginação -->
-  <div class="pagination" id="pagination">
-    {features.map((_, i) => <button class={`dot ${i === 0 ? "active" : ""}`} data-index={i} aria-label={`Card ${i + 1}`} />)}
   </div>
 </section>
 
 <style>
-  .carousel-section {
-    padding: 80px 0 100px;
+  .features-section {
+    padding: 100px 0 80px;
+    overflow: hidden;
   }
 
-  .section-header {
+  .features-header {
     text-align: center;
+    margin-bottom: 56px;
     padding: 0 24px;
-    margin-bottom: 60px;
   }
 
-  .section-tag {
+  .section-label {
+    color: #00ffcc;
+    font-family: "DM Sans", sans-serif;
     font-size: 0.8rem;
-    color: var(--neon-green);
-    letter-spacing: 0.08em;
-    margin-bottom: 20px;
-  }
-
-  h2 {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: -1px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
     margin-bottom: 16px;
   }
 
-  .highlight {
-    color: var(--neon-green);
-  }
-
-  .section-sub {
-    color: var(--text-gray);
-    font-size: 1rem;
-    max-width: 500px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-
-  /* ---- CARROSSEL ---- */
-  .carousel-outer {
-    position: relative;
-    overflow: hidden;
-    /* Padding para deixar o próximo card visível nas laterais */
-    padding: 20px 0 30px;
-  }
-
-  .carousel-track {
-    display: flex;
-    gap: 24px;
-    padding: 0 10vw;
-    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
-    cursor: grab;
-    user-select: none;
-  }
-
-  .carousel-track:active {
-    cursor: grabbing;
-  }
-
-  /* ---- CARD ---- */
-  .card {
-    flex: 0 0 340px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 36px 32px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  }
-
-  .card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-      ellipse 60% 50% at 50% 0%,
-      rgba(0, 255, 204, 0.06),
-      transparent
-    );
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .card:hover {
-    border-color: rgba(0, 255, 204, 0.4);
-    transform: translateY(-6px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 255, 204, 0.1);
-  }
-
-  .card:hover::before {
-    opacity: 1;
-  }
-
-  .card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 28px;
-  }
-
-  .card-icon {
-    font-size: 2rem;
-    line-height: 1;
-  }
-
-  .card-badge {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--neon-green);
-    background: var(--neon-green-dim);
-    border: 1px solid rgba(0, 255, 204, 0.2);
-    padding: 4px 12px;
-    border-radius: 100px;
-  }
-
-  .card h3 {
-    font-size: 1.4rem;
+  h2 {
+    font-family: "Syne", sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 900;
-    margin-bottom: 14px;
-    letter-spacing: -0.5px;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    color: #dde3ed;
+    margin-bottom: 20px;
   }
 
-  .card p {
-    font-size: 0.92rem;
-    color: var(--text-gray);
+  .section-desc {
+    font-family: "DM Sans", sans-serif;
+    color: #8892a4;
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin: 0 auto;
     line-height: 1.65;
   }
 
-  .card-number {
-    position: absolute;
-    bottom: 24px;
-    right: 28px;
-    font-family: "Syne", sans-serif;
-    font-size: 3.5rem;
-    font-weight: 900;
-    color: var(--border);
-    line-height: 1;
-    letter-spacing: -2px;
-    transition: color 0.3s;
+  /* Layout com setas nas laterais */
+  .carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 24px;
   }
 
-  .card:hover .card-number {
-    color: rgba(0, 255, 204, 0.12);
-  }
-
-  /* ---- BOTÕES DE NAVEGAÇÃO ---- */
-  .nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
+  /* Setas */
+  .arrow-btn {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border: 1px solid var(--border);
-    background: var(--panel-dark);
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    z-index: 10;
-    transition: all 0.2s;
+    border: 1px solid #1e2a3a;
+    background: #131926;
+    color: #8892a4;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .nav-btn:hover {
-    border-color: var(--neon-green);
-    color: var(--neon-green);
-    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
-  }
-
-  .nav-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
-
-  .nav-prev {
-    left: 16px;
-  }
-
-  .nav-next {
-    right: 16px;
-  }
-
-  /* ---- PAGINAÇÃO ---- */
-  .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 12px;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    border: none;
-    background: var(--border);
     cursor: pointer;
-    transition: all 0.3s;
-    padding: 0;
+    transition: all 0.2s;
+    z-index: 2;
   }
 
-  .dot.active {
-    background: var(--neon-green);
-    width: 24px;
-    border-radius: 4px;
+  .arrow-btn:hover {
+    border-color: #00ffcc;
+    color: #00ffcc;
+    background: rgba(0, 255, 204, 0.06);
+  }
+
+  @media (max-width: 640px) {
+    .arrow-btn { display: none; }
+    .carousel-wrapper { padding: 0; }
+  }
+
+  /* Container */
+  .carousel-container {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    cursor: grab;
+    min-width: 0;
+  }
+
+  .carousel-container.is-dragging {
+    cursor: grabbing;
+  }
+
+  .carousel-fade-left,
+  .carousel-fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .carousel-fade-left  { left:  0; background: linear-gradient(to right, #080b10, transparent); }
+  .carousel-fade-right { right: 0; background: linear-gradient(to left,  #080b10, transparent); }
+
+  /* Track */
+  .carousel-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    padding: 8px 0 20px;
+    will-change: transform;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* Card */
+  .card {
+    flex-shrink: 0;
+    width: 300px;
+    background: #131926;
+    border: 1px solid #1e2a3a;
+    border-radius: 16px;
+    padding: 28px 26px;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+
+  .carousel-container:not(.is-dragging) .card {
+    pointer-events: auto;
+  }
+
+  .carousel-container:not(.is-dragging) .card:hover {
+    border-color: rgba(0, 255, 204, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,255,204,0.08);
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(0, 255, 204, 0.08);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00ffcc;
+    margin-bottom: 18px;
+  }
+
+  .card-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: rgba(0, 255, 204, 0.08);
+    color: #00ffcc;
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-family: "Syne", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: -0.3px;
+    color: #dde3ed;
+    margin-bottom: 10px;
+  }
+
+  .card-desc {
+    font-family: "DM Sans", sans-serif;
+    color: #8892a4;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin: 0;
   }
 </style>
 
 <script>
-  const track = document.getElementById("carousel-track") as HTMLElement;
-  const prevBtn = document.getElementById("prev-btn") as HTMLButtonElement;
-  const nextBtn = document.getElementById("next-btn") as HTMLButtonElement;
-  const dots = document.querySelectorAll(".dot") as NodeListOf<HTMLButtonElement>;
-  const cards = document.querySelectorAll(".card") as NodeListOf<HTMLElement>;
+  const track     = document.getElementById("fc-track")     as HTMLElement;
+  const container = document.getElementById("fc-container") as HTMLElement;
+  const btnPrev   = document.getElementById("fc-prev")      as HTMLButtonElement;
+  const btnNext   = document.getElementById("fc-next")      as HTMLButtonElement;
 
-  const cardWidth = 340;
-  const gap = 24;
-  const step = cardWidth + gap;
-  const total = cards.length;
+  const CARD_WIDTH  = 300;
+  const GAP         = 20;
+  const STEP        = CARD_WIDTH + GAP;
+  const TOTAL_CARDS = track.children.length;
+  const HALF_WIDTH  = (TOTAL_CARDS / 2) * STEP;
 
-  let current = 0;
+  let offset = 0;
 
-  function getVisibleCount(): number {
-    return Math.floor(window.innerWidth / step) || 1;
+  function applyOffset(animated = false) {
+    // Loop infinito
+    if (offset >= HALF_WIDTH) offset -= HALF_WIDTH;
+    if (offset < 0)           offset += HALF_WIDTH;
+    track.style.transition = animated ? "transform 0.42s cubic-bezier(0.4,0,0.2,1)" : "none";
+    track.style.transform  = `translateX(${-offset}px)`;
   }
 
-  function updateCarousel() {
-    const padding = window.innerWidth * 0.1; // 10vw
-    track.style.transform = `translateX(calc(-${current * step}px))`;
-
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current >= total - getVisibleCount();
-
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("active", i === current);
-    });
-  }
-
-  prevBtn.addEventListener("click", () => {
-    if (current > 0) {
-      current--;
-      updateCarousel();
-    }
+  // ── Setas ────────────────────────────────────────────
+  btnNext.addEventListener("click", () => {
+    offset += STEP * 3;
+    applyOffset(true);
   });
 
-  nextBtn.addEventListener("click", () => {
-    if (current < total - getVisibleCount()) {
-      current++;
-      updateCarousel();
-    }
+  btnPrev.addEventListener("click", () => {
+    offset -= STEP * 3;
+    applyOffset(true);
   });
 
-  dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => {
-      current = i;
-      updateCarousel();
-    });
-  });
+  // ── Drag (mouse) ─────────────────────────────────────
+  let dragStartX      = 0;
+  let dragStartOffset = 0;
+  let isDragging      = false;
+  let lastX           = 0;
+  let lastTime        = 0;
+  let velocity        = 0;
 
-  // Suporte a drag/swipe
-  let startX = 0;
-  let isDragging = false;
-
-  track.addEventListener("mousedown", (e) => {
-    startX = e.clientX;
-    isDragging = true;
+  container.addEventListener("mousedown", (e) => {
+    isDragging      = true;
+    dragStartX      = e.clientX;
+    dragStartOffset = offset;
+    lastX           = e.clientX;
+    lastTime        = performance.now();
+    velocity        = 0;
+    container.classList.add("is-dragging");
+    track.style.transition = "none";
   });
 
   window.addEventListener("mousemove", (e) => {
     if (!isDragging) return;
-    const diff = startX - e.clientX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0 && current < total - getVisibleCount()) current++;
-      else if (diff < 0 && current > 0) current--;
-      isDragging = false;
-      updateCarousel();
+    const now = performance.now();
+    velocity  = (e.clientX - lastX) / (now - lastTime + 1);
+    lastX     = e.clientX;
+    lastTime  = now;
+    offset    = dragStartOffset - (e.clientX - dragStartX);
+    applyOffset();
+  });
+
+  window.addEventListener("mouseup", () => {
+    if (!isDragging) return;
+    isDragging = false;
+    container.classList.remove("is-dragging");
+    applyInertia();
+  });
+
+  // ── Touch (mobile) ───────────────────────────────────
+  let touchStartX      = 0;
+  let touchStartOffset = 0;
+
+  container.addEventListener("touchstart", (e) => {
+    touchStartX      = e.touches[0].clientX;
+    touchStartOffset = offset;
+    lastX            = touchStartX;
+    lastTime         = performance.now();
+    velocity         = 0;
+    track.style.transition = "none";
+  }, { passive: true });
+
+  container.addEventListener("touchmove", (e) => {
+    const now = performance.now();
+    velocity  = (e.touches[0].clientX - lastX) / (now - lastTime + 1);
+    lastX     = e.touches[0].clientX;
+    lastTime  = now;
+    offset    = touchStartOffset - (e.touches[0].clientX - touchStartX);
+    applyOffset();
+  }, { passive: true });
+
+  container.addEventListener("touchend", () => {
+    applyInertia();
+  });
+
+  // ── Inércia pós-drag ─────────────────────────────────
+  function applyInertia() {
+    let v = -velocity * 14;
+
+    function frame() {
+      if (Math.abs(v) < 0.15) return;
+      offset += v;
+      v      *= 0.93;
+      applyOffset();
+      requestAnimationFrame(frame);
     }
-  });
 
-  window.addEventListener("mouseup", () => (isDragging = false));
-
-  // Touch
-  track.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX), { passive: true });
-  track.addEventListener("touchend", (e) => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (diff > 50 && current < total - getVisibleCount()) { current++; updateCarousel(); }
-    if (diff < -50 && current > 0) { current--; updateCarousel(); }
-  });
-
-  // Inicializa
-  updateCarousel();
-  window.addEventListener("resize", updateCarousel);
+    requestAnimationFrame(frame);
+  }
 </script>
