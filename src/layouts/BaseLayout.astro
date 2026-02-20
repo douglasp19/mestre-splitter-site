@@ -1,0 +1,57 @@
+---
+interface Props {
+  title?: string;
+}
+const { title = "Mestre Splitter" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global>
+      :root {
+        --bg-dark: #080b10;
+        --panel-dark: #0e1420;
+        --neon-green: #00ffcc;
+        --neon-green-dim: rgba(0, 255, 204, 0.08);
+        --text-gray: #8892a4;
+        --text-light: #cbd5e1;
+        --card-bg: #111826;
+        --border: #1e2d40;
+      }
+
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        background-color: var(--bg-dark);
+        color: white;
+        font-family: "Syne", sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      ::selection {
+        background: var(--neon-green);
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

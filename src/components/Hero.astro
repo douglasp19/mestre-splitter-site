@@ -1,0 +1,242 @@
+---
+---
+
+<section class="hero-wrapper">
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="badge-top">
+      <span class="dot"></span>
+      IA local · Sem mensalidade · Sem limites
+    </div>
+
+    <h1>
+      Revolucione sua<br />
+      edição de vídeos com<br />
+      <span class="highlight">Mestre Splitter</span>
+    </h1>
+
+    <p>
+      Legende e corte seus vídeos com Inteligência Artificial direto do seu
+      computador. <strong>Sem mensalidade e sem limites de uso.</strong>
+      Experimente a liberdade de criar sem barreiras!
+    </p>
+
+    <div class="button-group">
+      <a href="#" class="btn btn-buy">
+        <span>Comprar Agora</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="#" class="btn btn-demo">Solicitar Demo (7 dias)</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-value">90+</span>
+        <span class="stat-label">Idiomas</span>
+      </div>
+      <div class="divider"></div>
+      <div class="stat">
+        <span class="stat-value">100%</span>
+        <span class="stat-label">Offline</span>
+      </div>
+      <div class="divider"></div>
+      <div class="stat">
+        <span class="stat-value">∞</span>
+        <span class="stat-label">Vídeos/dia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    overflow: hidden;
+  }
+
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.35;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(0,255,204,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    text-align: center;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .badge-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--neon-green-dim);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--neon-green);
+    margin-bottom: 32px;
+    letter-spacing: 0.05em;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--neon-green);
+    box-shadow: 0 0 8px var(--neon-green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 28px;
+    color: #e2e8f0;
+  }
+
+  .highlight {
+    color: var(--neon-green);
+    display: inline;
+    text-shadow: 0 0 40px rgba(0,255,204,0.3);
+  }
+
+  p {
+    color: var(--text-gray);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    font-weight: 400;
+  }
+
+  p strong {
+    color: var(--text-light);
+    font-weight: 700;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-family: 'Syne', sans-serif;
+    transition: all 0.2s ease;
+    letter-spacing: 0.03em;
+  }
+
+  .btn-buy {
+    background-color: var(--neon-green);
+    color: #000;
+    border: 2px solid var(--neon-green);
+  }
+
+  .btn-buy:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.4);
+  }
+
+  .btn-demo {
+    background: transparent;
+    color: var(--text-light);
+    border: 2px solid var(--border);
+  }
+
+  .btn-demo:hover {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+    transform: translateY(-3px);
+  }
+
+  .stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 32px;
+    padding: 20px 40px;
+    border-radius: 12px;
+    background: var(--panel-dark);
+    border: 1px solid var(--border);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .stat-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--neon-green);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+  }
+</style>

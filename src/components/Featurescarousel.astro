@@ -1,0 +1,397 @@
+---
+const features = [
+  {
+    badge: "Performance",
+    icon: "⚡",
+    title: "Tecnologia de Ponta",
+    description:
+      "Motor Faster Whisper combinado com processamento FFmpeg para a maior velocidade do mercado. Resultados profissionais em segundos.",
+    accent: "#00ffcc",
+  },
+  {
+    badge: "Autonomia",
+    icon: "🖥️",
+    title: "Solução 100% Offline",
+    description:
+      "Diferente de outros serviços, Mestre Splitter roda inteiramente no seu hardware. Sem custos por minuto, sem nuvem, sem limites.",
+    accent: "#00ffcc",
+  },
+  {
+    badge: "Idiomas",
+    icon: "🌐",
+    title: "Multi idiomas",
+    description:
+      "Detecção automática de mais de 90 idiomas para gerar arquivos de legenda com pontuação perfeita e precisão profissional.",
+    accent: "#00ffcc",
+  },
+  {
+    badge: "Precisão",
+    icon: "✂️",
+    title: "Alta Qualidade",
+    description:
+      "Fatie vídeos longos em partes perfeitas para Shorts, Reels e TikTok. Cortes exatos, sem artefatos, em segundos.",
+    accent: "#00ffcc",
+  },
+  {
+    badge: "Escalável",
+    icon: "∞",
+    title: "Uso Ilimitado",
+    description:
+      "Legende e corte 1 ou 1.000 vídeos por dia. O custo operacional é zero — você paga uma vez e usa para sempre.",
+    accent: "#00ffcc",
+  },
+  {
+    badge: "Interface",
+    icon: "🎯",
+    title: "Fácil de Usar",
+    description:
+      "Interface interativa desenhada para editores. Arraste, solte e processe com poucos cliques. Curva de aprendizado zero.",
+    accent: "#00ffcc",
+  },
+];
+---
+
+<section class="carousel-section">
+  <div class="section-header">
+    <p class="section-tag">✦ Por que o Mestre Splitter?</p>
+    <h2>
+      Cansado de pagar assinaturas<br />
+      <span class="highlight">caras todo mês?</span>
+    </h2>
+    <p class="section-sub">
+      Irritado com limites de minutos ou precisar de internet ultra-rápida para subir vídeos pesados na nuvem?
+    </p>
+  </div>
+
+  <!-- Track do carrossel -->
+  <div class="carousel-outer">
+    <div class="carousel-track" id="carousel-track">
+      {
+        features.map((feature, i) => (
+          <div class="card" data-index={i}>
+            <div class="card-top">
+              <span class="card-icon">{feature.icon}</span>
+              <span class="card-badge">{feature.badge}</span>
+            </div>
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+            <div class="card-number">0{i + 1}</div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Botões de navegação -->
+    <button class="nav-btn nav-prev" id="prev-btn" aria-label="Anterior">
+      ←
+    </button>
+    <button class="nav-btn nav-next" id="next-btn" aria-label="Próximo">
+      →
+    </button>
+  </div>
+
+  <!-- Indicadores de paginação -->
+  <div class="pagination" id="pagination">
+    {features.map((_, i) => <button class={`dot ${i === 0 ? "active" : ""}`} data-index={i} aria-label={`Card ${i + 1}`} />)}
+  </div>
+</section>
+
+<style>
+  .carousel-section {
+    padding: 80px 0 100px;
+  }
+
+  .section-header {
+    text-align: center;
+    padding: 0 24px;
+    margin-bottom: 60px;
+  }
+
+  .section-tag {
+    font-size: 0.8rem;
+    color: var(--neon-green);
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  .highlight {
+    color: var(--neon-green);
+  }
+
+  .section-sub {
+    color: var(--text-gray);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ---- CARROSSEL ---- */
+  .carousel-outer {
+    position: relative;
+    overflow: hidden;
+    /* Padding para deixar o próximo card visível nas laterais */
+    padding: 20px 0 30px;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 24px;
+    padding: 0 10vw;
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .carousel-track:active {
+    cursor: grabbing;
+  }
+
+  /* ---- CARD ---- */
+  .card {
+    flex: 0 0 340px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 60% 50% at 50% 0%,
+      rgba(0, 255, 204, 0.06),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .card:hover {
+    border-color: rgba(0, 255, 204, 0.4);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 255, 204, 0.1);
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .card-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--neon-green);
+    background: var(--neon-green-dim);
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .card h3 {
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+
+  .card p {
+    font-size: 0.92rem;
+    color: var(--text-gray);
+    line-height: 1.65;
+  }
+
+  .card-number {
+    position: absolute;
+    bottom: 24px;
+    right: 28px;
+    font-family: "Syne", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    letter-spacing: -2px;
+    transition: color 0.3s;
+  }
+
+  .card:hover .card-number {
+    color: rgba(0, 255, 204, 0.12);
+  }
+
+  /* ---- BOTÕES DE NAVEGAÇÃO ---- */
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--panel-dark);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-btn:hover {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+  }
+
+  .nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .nav-prev {
+    left: 16px;
+  }
+
+  .nav-next {
+    right: 16px;
+  }
+
+  /* ---- PAGINAÇÃO ---- */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: var(--border);
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0;
+  }
+
+  .dot.active {
+    background: var(--neon-green);
+    width: 24px;
+    border-radius: 4px;
+  }
+</style>
+
+<script>
+  const track = document.getElementById("carousel-track") as HTMLElement;
+  const prevBtn = document.getElementById("prev-btn") as HTMLButtonElement;
+  const nextBtn = document.getElementById("next-btn") as HTMLButtonElement;
+  const dots = document.querySelectorAll(".dot") as NodeListOf<HTMLButtonElement>;
+  const cards = document.querySelectorAll(".card") as NodeListOf<HTMLElement>;
+
+  const cardWidth = 340;
+  const gap = 24;
+  const step = cardWidth + gap;
+  const total = cards.length;
+
+  let current = 0;
+
+  function getVisibleCount(): number {
+    return Math.floor(window.innerWidth / step) || 1;
+  }
+
+  function updateCarousel() {
+    const padding = window.innerWidth * 0.1; // 10vw
+    track.style.transform = `translateX(calc(-${current * step}px))`;
+
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current >= total - getVisibleCount();
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === current);
+    });
+  }
+
+  prevBtn.addEventListener("click", () => {
+    if (current > 0) {
+      current--;
+      updateCarousel();
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (current < total - getVisibleCount()) {
+      current++;
+      updateCarousel();
+    }
+  });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      current = i;
+      updateCarousel();
+    });
+  });
+
+  // Suporte a drag/swipe
+  let startX = 0;
+  let isDragging = false;
+
+  track.addEventListener("mousedown", (e) => {
+    startX = e.clientX;
+    isDragging = true;
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    const diff = startX - e.clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0 && current < total - getVisibleCount()) current++;
+      else if (diff < 0 && current > 0) current--;
+      isDragging = false;
+      updateCarousel();
+    }
+  });
+
+  window.addEventListener("mouseup", () => (isDragging = false));
+
+  // Touch
+  track.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX), { passive: true });
+  track.addEventListener("touchend", (e) => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (diff > 50 && current < total - getVisibleCount()) { current++; updateCarousel(); }
+    if (diff < -50 && current > 0) { current--; updateCarousel(); }
+  });
+
+  // Inicializa
+  updateCarousel();
+  window.addEventListener("resize", updateCarousel);
+</script>
