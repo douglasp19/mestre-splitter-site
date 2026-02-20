@@ -1,0 +1,170 @@
+---
+---
+
+<section class="demo-section">
+  <div class="demo-header">
+    <p class="section-label">Veja em ação</p>
+    <h2>Simples assim. Sem complicação.</h2>
+    <p class="section-desc">
+      Arraste o vídeo, escolha o modo e pronto. Veja como o Mestre Splitter
+      funciona na prática.
+    </p>
+  </div>
+
+  <div class="gifs-grid">
+    <div class="gif-card">
+      <div class="gif-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        Geração de Legendas
+      </div>
+      <div class="gif-wrapper">
+        <img
+          src="/demo-legendas.gif"
+          alt="Demonstração da geração automática de legendas"
+          class="gif-img"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <div class="gif-card">
+      <div class="gif-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+        </svg>
+        Corte de Vídeos
+      </div>
+      <div class="gif-wrapper">
+        <img
+          src="/demo-corte.gif"
+          alt="Demonstração do corte automático de vídeos"
+          class="gif-img"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .demo-section {
+    padding: 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .demo-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .section-label {
+    color: var(--neon-green);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    color: var(--text-gray);
+    font-size: 1.05rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  .gifs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .gif-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+
+  .gif-card:hover {
+    border-color: rgba(0, 255, 204, 0.35);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 255, 204, 0.08);
+    transform: translateY(-4px);
+  }
+
+  .gif-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--neon-green);
+    background: rgba(0, 255, 204, 0.03);
+  }
+
+  .gif-wrapper {
+    position: relative;
+    width: 100%;
+    /* Mantém proporção 16:9 */
+    aspect-ratio: 16 / 9;
+    background: #0a0e18;
+    overflow: hidden;
+  }
+
+  /* Placeholder enquanto o gif não carrega */
+  .gif-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, #0f1420 25%, #131926 50%, #0f1420 75%);
+    background-size: 400% 400%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .gif-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Esconde o shimmer quando carrega */
+    z-index: 1;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .demo-section {
+      padding: 80px 24px;
+    }
+
+    .gifs-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+</style>

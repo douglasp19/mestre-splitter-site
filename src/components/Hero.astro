@@ -8,6 +8,7 @@
   <div class="hero-inner">
     <!-- Texto -->
     <div class="text-col">
+
       <div class="badge-top">
         <span class="dot"></span>
         IA local · Sem mensalidade · Sem limites
@@ -34,25 +35,28 @@
         <a href="#" class="btn btn-demo">Solicitar Demo (7 dias)</a>
       </div>
 
-      <div class="stats">
-        <div class="stat">
-          <span class="stat-value">90+</span>
-          <span class="stat-label">Idiomas</span>
-        </div>
-        <div class="divider"></div>
-        <div class="stat">
-          <span class="stat-value">100%</span>
-          <span class="stat-label">Offline</span>
-        </div>
-        <div class="divider"></div>
-        <div class="stat">
-          <span class="stat-value">∞</span>
-          <span class="stat-label">Vídeos/dia</span>
+      <div class="stats-wrapper">
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-value">90+</span>
+            <span class="stat-label">Idiomas</span>
+          </div>
+          <div class="divider"></div>
+          <div class="stat">
+            <span class="stat-value">100%</span>
+            <span class="stat-label">Offline</span>
+          </div>
+          <div class="divider"></div>
+          <div class="stat">
+            <span class="stat-value">∞</span>
+            <span class="stat-label">Vídeos/dia</span>
+          </div>
         </div>
       </div>
+
     </div>
 
-    <!-- Mascote (mobile: aparece primeiro via order) -->
+    <!-- Mascote + Preço -->
     <div class="mascot-col">
       <div class="mascot-wrapper">
         <div class="mascot-glow" aria-hidden="true"></div>
@@ -63,6 +67,17 @@
           width="480"
           height="480"
         />
+      </div>
+
+      <!-- Tag de preço flutuante -->
+      <div class="price-tag">
+        <span class="price-label">🎉 Promoção de lançamento</span>
+        <div class="price-row">
+          <span class="price-old">R$ 99,90</span>
+          <span class="price-arrow">→</span>
+          <span class="price-new">R$ 49,90</span>
+        </div>
+        <span class="price-sub">Pagamento único · Licença vitalícia</span>
       </div>
     </div>
 
@@ -120,55 +135,12 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* MASCOTE */
-  .mascot-col {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    order: 2;
-  }
-
-  .mascot-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
-  }
-
-  .mascot-glow {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 340px;
-    height: 340px;
-    background: radial-gradient(circle, rgba(0, 255, 204, 0.12) 0%, transparent 70%);
-    pointer-events: none;
-    border-radius: 50%;
-  }
-
-  .mascot-img {
-    width: 100%;
-    max-width: 440px;
-    height: auto;
-    /* Remove o fundo preto da imagem PNG */
-    mix-blend-mode: screen;
-    filter: drop-shadow(0 0 32px rgba(0, 255, 204, 0.2));
-    animation: float 5s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-14px); }
-  }
-
   /* TEXTO */
-  .text-col {
-    order: 1;
-    text-align: left;
-  }
+  .text-col { order: 1; }
 
   .badge-top {
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
     align-items: center;
     gap: 8px;
     background: var(--neon-green-dim);
@@ -180,7 +152,7 @@
     text-transform: uppercase;
     padding: 6px 16px;
     border-radius: 100px;
-    margin-bottom: 28px;
+    margin: 0 auto 28px auto;
   }
 
   .dot {
@@ -205,6 +177,7 @@
     letter-spacing: -2px;
     margin-bottom: 20px;
     color: var(--text-light);
+    text-align: left;
   }
 
   .highlight {
@@ -219,6 +192,7 @@
     line-height: 1.7;
     margin-bottom: 36px;
     max-width: 480px;
+    text-align: left;
   }
 
   p strong { color: var(--text-light); }
@@ -228,6 +202,7 @@
     gap: 14px;
     flex-wrap: wrap;
     margin-bottom: 48px;
+    justify-content: flex-start;
   }
 
   .btn {
@@ -244,26 +219,12 @@
     font-family: "DM Sans", sans-serif;
   }
 
-  .btn-buy {
-    background: var(--neon-green);
-    color: #080b10;
-    border: none;
-  }
-  .btn-buy:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 28px rgba(0, 255, 204, 0.45);
-  }
+  .btn-buy { background: var(--neon-green); color: #080b10; border: none; }
+  .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 0 28px rgba(0, 255, 204, 0.45); }
+  .btn-demo { background: transparent; color: var(--text-light); border: 1px solid var(--border); }
+  .btn-demo:hover { border-color: rgba(0, 255, 204, 0.4); color: var(--neon-green); transform: translateY(-2px); }
 
-  .btn-demo {
-    background: transparent;
-    color: var(--text-light);
-    border: 1px solid var(--border);
-  }
-  .btn-demo:hover {
-    border-color: rgba(0, 255, 204, 0.4);
-    color: var(--neon-green);
-    transform: translateY(-2px);
-  }
+  .stats-wrapper { text-align: center; }
 
   .stats {
     display: inline-flex;
@@ -275,66 +236,126 @@
     padding: 18px 28px;
   }
 
-  .stat {
+  .stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .stat-value { font-family: "Syne", sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--neon-green); }
+  .stat-label { font-size: 0.75rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.08em; }
+  .divider { width: 1px; height: 32px; background: var(--border); }
+
+  /* MASCOTE */
+  .mascot-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+    gap: 20px;
+  }
+
+  .mascot-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .mascote-glow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 340px;
+    height: 340px;
+    background: radial-gradient(circle, rgba(0, 255, 204, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+    border-radius: 50%;
+  }
+
+  .mascot-img {
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 0 32px rgba(0, 255, 204, 0.2));
+    animation: float 5s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-14px); }
+  }
+
+  /* PRICE TAG */
+  .price-tag {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
+    background: var(--card-bg);
+    border: 1px solid rgba(0, 255, 204, 0.25);
+    border-radius: 14px;
+    padding: 16px 28px;
+    animation: float 5s ease-in-out infinite;
+    animation-delay: 0.5s;
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.06), inset 0 1px 0 rgba(255,255,255,0.04);
   }
 
-  .stat-value {
-    font-family: "Syne", sans-serif;
-    font-size: 1.6rem;
-    font-weight: 900;
+  .price-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     color: var(--neon-green);
   }
 
-  .stat-label {
-    font-size: 0.75rem;
-    color: var(--text-gray);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+  .price-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
-  .divider {
-    width: 1px;
-    height: 32px;
-    background: var(--border);
+  .price-old {
+    font-family: "Syne", sans-serif;
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    text-decoration: line-through;
+    text-decoration-color: rgba(255, 80, 80, 0.7);
+    text-decoration-thickness: 2px;
+  }
+
+  .price-arrow {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+  }
+
+  .price-new {
+    font-family: "Syne", sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--neon-green);
+    text-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+  }
+
+  .price-sub {
+    font-size: 0.72rem;
+    color: var(--text-gray);
+    letter-spacing: 0.04em;
   }
 
   /* MOBILE */
   @media (max-width: 768px) {
-    .hero {
-      padding: 60px 24px 80px;
-    }
+    .hero { padding: 60px 24px 80px; }
 
     .hero-inner {
       grid-template-columns: 1fr;
       gap: 0;
     }
 
-    /* Mascote sobe para o topo no mobile */
-    .mascot-col {
-      order: -1;
-      margin-bottom: 8px;
-    }
+    .mascot-col { order: -1; margin-bottom: 8px; }
+    .mascot-img { max-width: 240px; }
 
-    .mascot-img {
-      max-width: 240px;
-    }
-
-    .text-col {
-      order: 1;
-      text-align: center;
-    }
-
+    .text-col { order: 1; text-align: center; }
+    h1, p { text-align: center; }
     p { max-width: 100%; }
-
     .button-group { justify-content: center; }
-
-    .stats {
-      width: 100%;
-      justify-content: center;
-    }
+    .stats { width: 100%; justify-content: center; }
   }
 </style>

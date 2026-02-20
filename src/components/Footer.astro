@@ -1,0 +1,105 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <span class="footer-logo">MS</span>
+      <span class="footer-name">Mestre Splitter</span>
+    </div>
+
+    <p class="footer-copy">
+      © {year} Mestre Splitter. Todos os direitos reservados.
+    </p>
+
+    <div class="footer-links">
+      <a href="#">Contato</a>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid #1e2a3a;
+    background-color: #080b10;
+    padding: 36px 40px;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-logo {
+    font-family: "Syne", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 900;
+    background: #00ffcc;
+    color: #080b10;
+    padding: 3px 7px;
+    border-radius: 5px;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-name {
+    font-family: "Syne", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #dde3ed;
+  }
+
+  .footer-copy {
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.82rem;
+    color: #8892a4;
+    margin: 0;
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.82rem;
+  }
+
+  .footer-links a {
+    color: #8892a4;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: #00ffcc;
+  }
+
+  .sep {
+    color: #1e2a3a;
+  }
+
+  @media (max-width: 640px) {
+    .footer {
+      padding: 32px 24px;
+    }
+
+    .footer-inner {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+</style>
